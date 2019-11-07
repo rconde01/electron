@@ -1521,21 +1521,37 @@ describe('webContents module', () => {
 
   describe('setBackgroundThrottling()', () => {
     afterEach(closeAllWindows);
-    it('does not crash when allowing', () => {
+    it('does not crash when allowing via getter', () => {
       const w = new BrowserWindow({ show: false });
       w.webContents.setBackgroundThrottling(true);
+      expect(w.webContents.getBackgroundThrottling()).to.equal(true);
+    });
+
+    it('does not crash when allowing via property', () => {
+      const w = new BrowserWindow({ show: false });
+      w.webContents.backgroundThrottling = true;
+      expect(w.webContents.backgroundThrottling).to.equal(true);
     });
 
     it('does not crash when called via BrowserWindow', () => {
       const w = new BrowserWindow({ show: false });
 
       (w as any).setBackgroundThrottling(true);
+      expect((w as any).getBackgroundThrottling()).to.equal(true);
     });
 
-    it('does not crash when disallowing', () => {
+    it('does not crash when disallowing via setter', () => {
       const w = new BrowserWindow({ show: false, webPreferences: { backgroundThrottling: true } });
 
       w.webContents.setBackgroundThrottling(false);
+      expect(w.webContents.getBackgroundThrottling()).to.equal(false);
+    });
+
+    it('does not crash when disallowing via property', () => {
+      const w = new BrowserWindow({ show: false, webPreferences: { backgroundThrottling: true } });
+
+      w.webContents.backgroundThrottling = false;
+      expect(w.webContents.backgroundThrottling).to.equal(false);
     });
   });
 
