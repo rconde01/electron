@@ -222,6 +222,25 @@ ifdescribe(features.isRemoteModuleEnabled())('remote module', () => {
     });
   });
 
+  describe('nativeImage serialization', () => {
+    it('properly serializes nativeImages', (done) => {
+      const w = new BrowserWindow({
+        show: false,
+        webPreferences: {
+          nodeIntegration: true,
+          enableRemoteModule: true
+        }
+      });
+
+      ipcMain.once('make-menu', (event, message) => {
+        expect(message).to.match(/^No error thrown/);
+        done();
+      });
+
+      w.loadFile(path.join(fixtures, 'api', 'nativeimage-serialization.html'));
+    });
+  });
+
   describe('remote listeners', () => {
     afterEach(closeAllWindows);
 
