@@ -64,10 +64,10 @@ index 2ee45cb069ec5d78d9c7a3f61fdd1d444a590f41..badc4323b910f8e3957583e05af30347
    // Beware: This view was briefly removed (in favor of a bare CALayer) in
    // crrev/c/1236675. The ordering of unassociated layers relative to NSView
 diff --git a/content/app_shim_remote_cocoa/ns_view_bridge_factory_impl.mm b/content/app_shim_remote_cocoa/ns_view_bridge_factory_impl.mm
-index 82696053ce7cd1d47c9034899a76555af716f4ba..0ed7a32fa839b449aaacc2338f59f6ff17814891 100644
+index 2aecd9c93160b0a7ff3bfd716d7b5cb6c153f504..747cb34975b5ac2e9c58b5d4b7ba5c1ce3073a7f 100644
 --- a/content/app_shim_remote_cocoa/ns_view_bridge_factory_impl.mm
 +++ b/content/app_shim_remote_cocoa/ns_view_bridge_factory_impl.mm
-@@ -66,8 +66,10 @@ class RenderWidgetHostNSViewBridgeOwner
+@@ -67,8 +67,10 @@ class RenderWidgetHostNSViewBridgeOwner
      return nil;
    }
    void SetAccessibilityWindow(NSWindow* window) override {
@@ -78,7 +78,7 @@ index 82696053ce7cd1d47c9034899a76555af716f4ba..0ed7a32fa839b449aaacc2338f59f6ff
    }
  
    void ForwardKeyboardEvent(const content::NativeWebKeyboardEvent& key_event,
-@@ -126,8 +128,10 @@ class RenderWidgetHostNSViewBridgeOwner
+@@ -127,8 +129,10 @@ class RenderWidgetHostNSViewBridgeOwner
  
    mojo::AssociatedRemote<mojom::RenderWidgetHostNSViewHost> host_;
    std::unique_ptr<RenderWidgetHostNSViewBridge> bridge_;
@@ -90,7 +90,7 @@ index 82696053ce7cd1d47c9034899a76555af716f4ba..0ed7a32fa839b449aaacc2338f59f6ff
    DISALLOW_COPY_AND_ASSIGN(RenderWidgetHostNSViewBridgeOwner);
  };
 diff --git a/content/browser/renderer_host/render_widget_host_view_mac.h b/content/browser/renderer_host/render_widget_host_view_mac.h
-index c610426ad9b91505da7b529015fc19a27d5ee170..2858e299ab9788a17e006c1093f01803c223fb1b 100644
+index 336ac58d9f5e40ea60542c31464993a6a47eef88..6150918f0edb44e5e09069f1c4900ff853b70cb8 100644
 --- a/content/browser/renderer_host/render_widget_host_view_mac.h
 +++ b/content/browser/renderer_host/render_widget_host_view_mac.h
 @@ -46,7 +46,9 @@ class ScopedPasswordInputEnabler;
@@ -117,7 +117,7 @@ index c610426ad9b91505da7b529015fc19a27d5ee170..2858e299ab9788a17e006c1093f01803
    // Used to force the NSApplication's focused accessibility element to be the
    // content::BrowserAccessibilityCocoa accessibility tree when the NSView for
 diff --git a/content/browser/renderer_host/render_widget_host_view_mac.mm b/content/browser/renderer_host/render_widget_host_view_mac.mm
-index c56fb05c579f3c95a132ee00a2ed83bf2cb85268..385b0dbeb7cbfb31ad0726051dc2e8fb4d7b16b2 100644
+index 077a460dbf83684dfd3cea37d8261d5905c57a9c..69851243f7765e21d0dea0bd418afae70f9c3eb4 100644
 --- a/content/browser/renderer_host/render_widget_host_view_mac.mm
 +++ b/content/browser/renderer_host/render_widget_host_view_mac.mm
 @@ -231,8 +231,10 @@ RenderWidgetHostViewMac::~RenderWidgetHostViewMac() {
@@ -170,7 +170,7 @@ index c56fb05c579f3c95a132ee00a2ed83bf2cb85268..385b0dbeb7cbfb31ad0726051dc2e8fb
  
  ///////////////////////////////////////////////////////////////////////////////
 diff --git a/ui/base/BUILD.gn b/ui/base/BUILD.gn
-index a4c47479dd8a39f467e5ea8ed3e2bb934e911973..46047665d20233d22b0c8c451a1ce375dcb2567e 100644
+index bacddf58cfa3be529b8cbb990c803ed50c790d97..2d8de72bfe75557016ac8b0c74c4bf089ee2f976 100644
 --- a/ui/base/BUILD.gn
 +++ b/ui/base/BUILD.gn
 @@ -305,6 +305,13 @@ jumbo_component("base") {
